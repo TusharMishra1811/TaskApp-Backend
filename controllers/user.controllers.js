@@ -13,7 +13,9 @@ const googleCallback = asyncHandler(async (req, res) => {
   };
   res.cookie("accessToken", accessToken, options);
 
-  const redirectUrl = `http://localhost:5173/google/callback?token=${accessToken}&user=${encodeURIComponent(
+  const redirectUrl = `${
+    process.env.FRONTEND_URL
+  }/google/callback?token=${accessToken}&user=${encodeURIComponent(
     JSON.stringify(user)
   )}`;
 
